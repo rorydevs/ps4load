@@ -15,18 +15,18 @@
                 width: 25px;
                 height: 25px;
                 margin-right: 5px;
-                
             }
-                       
+            
+            /* Spin forever */
             .x svg, .o svg, .square svg, .triangle svg {
                 -webkit-animation: spin 2s infinite ease;
                 float: left;
             }
-            
+            /* Flips the triange on its side */
             .triangle svg {
                 -webkit-transform-origin: 50% 60%;
             }
-                        
+            /* Animation keyframes to get the spin and expand bouncing */
             @-webkit-keyframes spin {
                 0%   {-webkit-transform: rotate(0deg) scale(0); }
                 45%   {-webkit-transform: rotate(180deg) scale(1); }
@@ -47,38 +47,39 @@
             </ul>
         </div>
 <!--        
-        <div class="x">
-            <svg width="25" height="25">
-                <g transform="translate(4,4) rotate(45,0,0)">
-                    <rect x="0" y="0" height="2" width="25" fill="none" stroke="#aaa" stroke-width="2"></rect>
-                </g>
-                <g transform="translate(3,22) rotate(-45,0,0)">
-                    <rect x="0" y="0" height="2" width="25" fill="none" stroke="#aaa" stroke-width="2"></rect>
-                </g>
-            </svg>
-        </div>
+## Testbed HTML for playing with the element styling ##
+<div class="x">
+    <svg width="25" height="25">
+        <g transform="translate(4,4) rotate(45,0,0)">
+            <rect x="0" y="0" height="2" width="25" fill="none" stroke="#aaa" stroke-width="2"></rect>
+        </g>
+        <g transform="translate(3,22) rotate(-45,0,0)">
+            <rect x="0" y="0" height="2" width="25" fill="none" stroke="#aaa" stroke-width="2"></rect>
+        </g>
+    </svg>
+</div>
 
-        
-        <div class="o">
-            <svg width="25" height="25">
-                <circle cx="12" cy="12" r="10" stroke="#aaa" stroke-width="4" fill="none" />
-            </svg>
-        </div>
-        
-        <div class="square">
-            <svg width="25" height="25">
-                <rect x="2" y="2" height="20" width="20" fill="none" stroke="#aaa" stroke-width="4"></rect>
-            </svg>
-        </div>
-        
-        <div class="triangle2" >
-            <svg width="25" height="25">
-                <g transform="translate(25,2) rotate(180)">
-                    <polygon class="shape" fill="none" stroke-width="4" stroke="#aaa" points="13,6 21.5, 23 4,23" />
-                </g>
-            </svg>
-        </div>
-        -->
+
+<div class="o">
+    <svg width="25" height="25">
+        <circle cx="12" cy="12" r="10" stroke="#aaa" stroke-width="4" fill="none" />
+    </svg>
+</div>
+
+<div class="square">
+    <svg width="25" height="25">
+        <rect x="2" y="2" height="20" width="20" fill="none" stroke="#aaa" stroke-width="4"></rect>
+    </svg>
+</div>
+
+<div class="triangle2" >
+    <svg width="25" height="25">
+        <g transform="translate(25,2) rotate(180)">
+            <polygon class="shape" fill="none" stroke-width="4" stroke="#aaa" points="13,6 21.5, 23 4,23" />
+        </g>
+    </svg>
+</div>
+-->
         <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -91,17 +92,16 @@
                 
                 
                 setInterval(function () {
+                    // Pick a random number from 1 to 4
                     var rand = Math.floor((Math.random() * 4) + 0);
-                    
+                    // Pull the relevant HTML and inject it into the next child li
                     $('.loading li:nth-child(' + symbolCount + ')').html(symbols[rand]);
                     
                     symbolCount++;
-                    
+                    // Reset the child count after 4
                     if(symbolCount > 4) {
                         symbolCount = 1;
                     }
-                    
-                    
                 }, 500);
                            
             });
